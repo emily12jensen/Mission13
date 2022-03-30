@@ -1,10 +1,17 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model List<Bowler>
+@model BowlerViewModel
 
 <div class="text-center">
     <h1 class="display-4">Bowlers</h1>
+
+</div>
+
+<div class="row m-1 p-1">
+
+        <vc:team></vc:team>
+
 
 </div>
 
@@ -19,11 +26,12 @@
             <th>State</th>
             <th>Zip</th>
             <th>Phone Number</th>
+
         </tr>
     </thead>
 
     <tbody>
-        @foreach (var a in Model)
+        @foreach (var a in Model.Bowlers)
         {
             <tr>
                 <td>@a.BowlerFirstName</td>
@@ -34,6 +42,7 @@
                 <td>@a.bowlerState</td>
                 <td>@a.BowlerZip</td>
                 <td>@a.BowlerPhoneNumber</td>
+
 
                 <td>
                     <a class="nav-link text-dark btn btn-warning btn-sm" asp-area="" asp-controller="Home" asp-action="Edit" asp-route-id="@a.BowlerID">Edit</a>
@@ -47,7 +56,7 @@
 
                 @*<td class="btn btn-info d-flex justify-content-center"><a asp-controller="Home" asp-action="ReservationForm" asp-route-id="@a.AppointmentId">Reserve</a></td>*@
             </tr>
-}
+        }
     </tbody>
 </table>
 

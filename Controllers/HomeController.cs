@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission13.Models;
+using Mission13.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,13 +25,20 @@ namespace Mission13.Controllers
             context = temp;
         }
 
-        public IActionResult Index()
+        public IActionResult Index( string BowlerTeam)
         {
-            var blah = context.Bowlers
-                //.FromSqlRaw("SELECT * FROM Recipes WHERE RecipeTitle LIKE 'a%'")
-                .ToList();
+            var x = new BowlerViewModel
+            {
+                Bowlers = context.Bowlers
+                .Where(x => x.Team.TeamName == BowlerTeam || BowlerTeam == null)
 
-            return View(blah);
+            };
+            //var blah = context.Bowlers
+                //.Include(x => TeamID)
+               // .FromSqlRaw("SELECT * FROM bowlers WHERE BowlerFirstName LIKE 'a%'")
+                //.ToList();
+
+             return View(x);
         }
 
 
@@ -81,12 +90,17 @@ namespace Mission13.Controllers
         [HttpPost]
         public IActionResult NewBowler(Bowler bowl)
         {
-            bowl.BowlerID = 55;
             if (ModelState.IsValid)
             {
-                context.Update(bowl);
+                context.Add(bowl);
                 context.SaveChanges();
-                return RedirectToAction("Success");
+                bowl.BowlerID = context.Bowlers.Count() + 1;
+                var x = new BowlerViewModel
+                {
+                    Bowlers = context.Bowlers
+
+                };
+                return RedirectToAction("Index", x);
             }
             else
             {
@@ -99,6 +113,11 @@ namespace Mission13.Controllers
         public IActionResult Success()
         {
             return View("Index");
+        }
+
+        public IActionResult ViewTeams()
+        {
+            return View("TeamInfo");
         }
     }
 }

@@ -3,42 +3,23 @@
 *@
 @{
 }
-@model Team
+@model List<Team>
 
 
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Middle Inital</th>
-                <th>Last Name</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zip</th>
-                <th>Phone Number</th>
+                <th>Team ID</th>
+                <th>Team Name</th>
+
             </tr>
         </thead>
         <tbody>
             @foreach (var a in Model)
             {
                 <tr>
-                    <td>@a.T</td>
-                    <td>@a.BowlerMiddleInit</td>
-                    <td>@a.BowlerLastName</td>
-
-
-                    <td>
-                        <a class="nav-link text-dark btn btn-warning btn-sm" asp-area="" asp-controller="Home" asp-action="Edit" asp-route-id="@a.BowlerID">Edit</a>
-
-                    </td>
-                    <td>
-                        <a class="nav-link text-dark btn btn-warning btn-sm" asp-area="" asp-controller="Home" asp-action="Delete" asp-route-id="@a.BowlerID">Delete</a>
-                    </td>
-
-                    <td type="hidden" asp-for="@a.BowlerID" />
-
-                    @*<td class="btn btn-info d-flex justify-content-center"><a asp-controller="Home" asp-action="ReservationForm" asp-route-id="@a.AppointmentId">Reserve</a></td>*@
+                    <td>@a.TeamID</td>
+                    <td>@a.TeamName</td>
                 </tr>
             }
         </tbody>

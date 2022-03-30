@@ -8,6 +8,9 @@
 
 
 <form method="post" asp-controller="Home" asp-action="NewBowler">
+    <div class="form-group">
+        <input asp-for="BowlerID" class="form-control" value="0" type="hidden"/>
+    </div>
 
     <div class="form-group">
         <label asp-for="BowlerFirstName">First Name: </label>
@@ -41,9 +44,24 @@
         <label asp-for="BowlerPhoneNumber">Phone Number: </label>
         <input asp-for="BowlerPhoneNumber" class="form-control" />
     </div>
+    @*<div class="form-group">
+            <label asp-for="TeamID">TeamID: </label>
+            <input asp-for="TeamID" class="form-control" />
+        </div>*@
     <div class="form-group">
-        <label asp-for="TeamID">TeamID: </label>
-        <input asp-for="TeamID" class="form-control" />
+        <label asp-for="TeamID">Team: </label>
+        <select asp-for="TeamID">
+            <option value=1>Marlins</option>
+            <option value=2>Sharks</option>
+            <option value=3>Terrapins</option>
+            <option value=4>Barracudas</option>
+            <option value=5>Dolphins</option>
+            <option value=6>Orcas</option>
+            <option value=7>Manatees</option>
+            <option value=8>Swordfish</option>
+            <option value=9>Huckleberrys</option>
+            <option value=10>MintJuleps</option>
+        </select>
     </div>
     <div class="float-end">
 
@@ -52,5 +70,5 @@
 
     </div>
     <div asp-validation-summary="All"></div>
-    <input type="hidden" asp-for="BowlerID" />
+    @*<input type="hidden" asp-for="BowlerID" value="" />*@
 </form>
