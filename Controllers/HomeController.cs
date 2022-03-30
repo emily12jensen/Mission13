@@ -29,10 +29,12 @@ namespace Mission13.Controllers
         {
             var x = new BowlerViewModel
             {
+
                 Bowlers = context.Bowlers
                 .Where(x => x.Team.TeamName == BowlerTeam || BowlerTeam == null)
 
             };
+            ViewBag.BowlerTeam = BowlerTeam;
             //var blah = context.Bowlers
                 //.Include(x => TeamID)
                // .FromSqlRaw("SELECT * FROM bowlers WHERE BowlerFirstName LIKE 'a%'")

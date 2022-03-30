@@ -13,6 +13,11 @@
     {
         <a asp-controller="Home" asp-action="Index" asp-route-BowlerTeam="@t"
            class="btn @(ViewBag.SelectedType == t ? "btn-primary": "btn-outline-secondary")" asp-route-pageNum="1">@t</a>
+
     }
-    <h2 class="text-center"> Players on team @ViewBag.BowlerTeam</h2>
+    
+    <header class="text-center">
+        <h3> @ViewBag.BowlerTeam </h3> 
+    </header>
+
 </div>

@@ -19,6 +19,7 @@ namespace Mission13.Components
         {
             ViewBag.SelectedTeam = RouteData?.Values["TeamName"];
 
+
             var Teams = repo.Teams
                 .Select(x => x.TeamName)
                 .Distinct()
