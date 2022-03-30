@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Bowler>
+
+<div class="text-center">
+    <h1 class="display-4">Bowlers</h1>
+
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Middle Inital</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@a.BowlerFirstName</td>
+                <td>@a.BowlerMiddleInit</td>
+                <td>@a.BowlerLastName</td>
+                <td>@a.BowlerAddress</td>
+                <td>@a.Bowlercity</td>
+                <td>@a.bowlerState</td>
+                <td>@a.BowlerZip</td>
+                <td>@a.BowlerPhoneNumber</td>
+
+                <td>
+                    <a class="nav-link text-dark btn btn-warning btn-sm" asp-area="" asp-controller="Home" asp-action="Edit" asp-route-id="@a.BowlerID">Edit</a>
+
+                </td>
+                <td>
+                    <a class="nav-link text-dark btn btn-warning btn-sm" asp-area="" asp-controller="Home" asp-action="Delete" asp-route-id="@a.BowlerID">Delete</a>
+                </td>
+
+                <td type="hidden" asp-for="@a.BowlerID" />
+
+                @*<td class="btn btn-info d-flex justify-content-center"><a asp-controller="Home" asp-action="ReservationForm" asp-route-id="@a.AppointmentId">Reserve</a></td>*@
+            </tr>
+}
+    </tbody>
+</table>
+
+<a class="nav-link text-dark btn btn-danger btn-sm" asp-area="" asp-controller="Home" asp-action="NewBowler">Add Bowler</a>
+

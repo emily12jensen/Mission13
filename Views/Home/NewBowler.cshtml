@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Bowler
+
+
+<form method="post" asp-controller="Home" asp-action="NewBowler">
+
+    <div class="form-group">
+        <label asp-for="BowlerFirstName">First Name: </label>
+        <input asp-for="BowlerFirstName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BowlerMiddleInit">Bowler middle Inital: </label>
+        <input asp-for="BowlerMiddleInit" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BowlerLastName">Bowler Last Name: </label>
+        <input asp-for="BowlerLastName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BowlerAddress">Address: </label>
+        <input asp-for="BowlerAddress" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Bowlercity">City: </label>
+        <input asp-for="Bowlercity" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="bowlerState">State: </label>
+        <input asp-for="bowlerState" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BowlerZip">Zip: </label>
+        <input asp-for="BowlerZip" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BowlerPhoneNumber">Phone Number: </label>
+        <input asp-for="BowlerPhoneNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="TeamID">TeamID: </label>
+        <input asp-for="TeamID" class="form-control" />
+    </div>
+    <div class="float-end">
+
+
+        <input class="btn btn-primary" type="submit" value="Save Bowler" />
+
+    </div>
+    <div asp-validation-summary="All"></div>
+    <input type="hidden" asp-for="BowlerID" />
+</form>
